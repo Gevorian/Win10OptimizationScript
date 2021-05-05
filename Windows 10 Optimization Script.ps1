@@ -1,5 +1,3 @@
-Best used with Ghost Spectre Custom OS: http://ghostspectre.the-ninja.jp/21H1.X64.html
-
 <#
 MIT License
 Copyright (c) 2021 Gevorian
@@ -46,9 +44,9 @@ $tweaks = @(
 	"DisableAdminShares",           # "EnableAdminShares",
 	"SetCurrentNetworkPrivate",     # "SetCurrentNetworkPublic",
 	"EnableCtrldFolderAccess",      # "DisableCtrldFolderAccess",
-	"DisableFirewall",            # "EnableFirewall",
-	"DisableDefender",            # "EnableDefender",
-	"DisableDefenderCloud",       # "EnableDefenderCloud",
+	"DisableFirewall",              # "EnableFirewall",
+	"DisableDefender",              # "EnableDefender",
+	"DisableDefenderCloud",         # "EnableDefenderCloud",
 	"DisableUpdateRestart",         # "EnableUpdateRestart",
 	"DisableHomeGroups",            # "EnableHomeGroups",
 	"DisableSharedExperiences",     # "EnableSharedExperiences",
@@ -93,7 +91,7 @@ $tweaks = @(
 	"DisableAdobeFlash",            # "EnableAdobeFlash",
 	"UninstallMediaPlayer",         # "InstallMediaPlayer",
 	"UninstallWorkFolders",         # "InstallWorkFolders",
-	"SetPhotoViewerAssociation",  # "UnsetPhotoViewerAssociation",
+	"SetPhotoViewerAssociation",    # "UnsetPhotoViewerAssociation",
 	"AddPhotoViewerOpenWith",       # "RemovePhotoViewerOpenWith",
 	"DisableSearchAppInStore",      # "EnableSearchAppInStore",
 	"DisableNewAppPrompt",          # "EnableNewAppPrompt",
@@ -109,192 +107,10 @@ $tweaks = @(
     "DisableCompatibilityAppraiser",
 	#Gevorian Custom Functions
 	"LowerLatency",
-	"RemoveBloatWareRegistry",
-	"RemoveBloatware",
 	"WaitForKey",
 	"Restart"
 )
 
-Function RemoveBloatware {
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\WbioSrvc") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\WbioSrvc" -force -ea SilentlyContinue };
-
-	# Disable Windows Font Cache Service
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\FontCache") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\FontCache" -force -ea SilentlyContinue };
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\FontCache3.0.0.0") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\FontCache3.0.0.0" -force -ea SilentlyContinue };
-
-	# Disable Human Interface Device Service
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\hidserv") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\hidserv" -force -ea SilentlyContinue };
-
-	# Disable Graphics performance monitor service
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\GraphicsPerfSvc") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\GraphicsPerfSvc" -force -ea SilentlyContinue };
-
-	# Disable Windows Image Acquisition (WIA)
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\stisvc") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\stisvc" -force -ea SilentlyContinue };
-
-	# Disable Windows Error Reporting Service
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\WerSvc") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\WerSvc" -force -ea SilentlyContinue };
-
-	# Disable Program Compatibility Assistant Service
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\PcaSvc") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\PcaSvc" -force -ea SilentlyContinue };
-
-	# Disable Windows Event Collector
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\Wecsvc") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\Wecsvc" -force -ea SilentlyContinue };
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\DiagTrack") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\DiagTrack" -force -ea SilentlyContinue };
-
-	#  Disable dmwappushservice
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\dmwappushservice") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\dmwappushservice" -force -ea SilentlyContinue };
-
-	#  Disable Diagnostic Execution Service
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\diagsvc") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\diagsvc" -force -ea SilentlyContinue };
-
-	#  Disable Diagnostic Policy Service
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\DPS") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\DPS" -force -ea SilentlyContinue };
-
-	#  Disable Microsoft (R) Diagnostics Hub Standard Collector Service
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\diagnosticshub.standardcollector.service") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\diagnosticshub.standardcollector.service" -force -ea SilentlyContinue };
-
-	#  Disable Diagnostic Service Host
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\WdiServiceHost") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\WdiServiceHost" -force -ea SilentlyContinue };
-
-	#  Disable Diagnostic System Host
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\WdiSystemHost") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\WdiSystemHost" -force -ea SilentlyContinue };
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\WinDefend") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\WinDefend" -force -ea SilentlyContinue };
-
-	# Disable Windows Defender Security Center Service
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\SecurityHealthService") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\SecurityHealthService" -force -ea SilentlyContinue };
-
-	# Disable Windows Defender Antivirus Network Inspection Service
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\WdNisSvc") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\WdNisSvc" -force -ea SilentlyContinue };
-
-	# Disable Windows Defender Advanced Threat Protection Service
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\Sense") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\Sense" -force -ea SilentlyContinue };
-
-	# Disable Security Center
-	if((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\wscsvc") -ne $true) {  New-Item "HKLM:\SYSTEM\CurrentControlSet\Services\wscsvc" -force -ea SilentlyContinue };
-	if((Test-Path -LiteralPath "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender") -ne $true) {  New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -force -ea SilentlyContinue };
-	if((Test-Path -LiteralPath "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection") -ne $true) {  New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" -force -ea SilentlyContinue };
-	if((Test-Path -LiteralPath "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting") -ne $true) {  New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting" -force -ea SilentlyContinue };
-	if((Test-Path -LiteralPath "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications") -ne $true) {  New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" -force -ea SilentlyContinue };
-	if((Test-Path -LiteralPath "HKCU:\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications") -ne $true) {  New-Item "HKCU:\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications" -force -ea SilentlyContinue };
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\WbioSrvc' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\FontCache' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\FontCache3.0.0.0' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\hidserv' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\GraphicsPerfSvc' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\stisvc' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\WerSvc' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\PcaSvc' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\Wecsvc' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\DiagTrack' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\dmwappushservice' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\diagsvc' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\DPS' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\diagnosticshub.standardcollector.service' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\WdiServiceHost' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\WdiSystemHost' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\WinDefend' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\SecurityHealthService' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\WdNisSvc' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\Sense' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Services\wscsvc' -Name 'Start' -Value 4 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender' -Name 'DisableAntiSpyware' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender' -Name 'DisableRoutinelyTakingAction' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender' -Name 'ServiceKeepAlive' -Value 0 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection' -Name 'DisableBehaviorMonitoring' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection' -Name 'DisableIOAVProtection' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection' -Name 'DisableOnAccessProtection' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection' -Name 'DisableRealtimeMonitoring' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Reporting' -Name 'DisableEnhancedNotifications' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications' -Name 'DisableNotifications' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKCU:\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications' -Name 'NoToastApplicationNotification' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
-	New-ItemProperty -LiteralPath 'HKCU:\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications' -Name 'NoToastApplicationNotificationOnLockScreen' -Value 1 -PropertyType DWord -Force -ea SilentlyContinue;
-
-}
-
-Function RemoveBloatWareRegistry {
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Search\PackageId\Microsoft.Windows.Search_1.14.0.19041_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.ComponentUI\PackageId\Microsoft.Windows.Search_1.14.0.19041_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.ComponentUI\PackageId\Microsoft.Windows.StartMenuExperienceHost_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.AppService\PackageId\Microsoft.Windows.Search_1.14.0.19041_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.AppService\PackageId\Microsoft.Windows.ShellExperienceHost_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\46928bounde.EclipseManager_2.2.4.51_neutral__a5h4egax66k6y" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.Windows.Search_1.14.0.19041_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.Windows.ShellExperienceHost_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.Windows.StartMenuExperienceHost_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\MicrosoftWindows.UndockedDevKit_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.MicrosoftOfficeHub_17.7909.7600.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.PPIProjection_10.0.15063.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.XboxGameCallableUI_1000.15063.0.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.XboxGameCallableUI_1000.16299.15.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.File\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\46928bounde.EclipseManager_2.2.4.51_neutral__a5h4egax66k6y" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.Windows.Search_1.14.0.19041_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.Windows.ShellExperienceHost_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.Windows.StartMenuExperienceHost_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\MicrosoftWindows.UndockedDevKit_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.PPIProjection_10.0.15063.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.XboxGameCallableUI_1000.15063.0.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.XboxGameCallableUI_1000.16299.15.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.PreInstalledConfigTask\PackageId\Microsoft.MicrosoftOfficeHub_17.7909.7600.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.PPIProjection_10.0.15063.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.XboxGameCallableUI_1000.15063.0.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.XboxGameCallableUI_1000.16299.15.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.Windows.Search_1.14.0.19041_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.Windows.ShellExperienceHost_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.ShareTarget\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\46928bounde.EclipseManager_2.2.4.51_neutral__a5h4egax66k6y" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.MicrosoftOfficeHub_17.7909.7600.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.PPIProjection_10.0.15063.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.XboxGameCallableUI_1000.15063.0.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.XboxGameCallableUI_1000.16299.15.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.Windows.Search_1.14.0.19041_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.Windows.ShellExperienceHost_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\Microsoft.Windows.StartMenuExperienceHost_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.BackgroundTasks\PackageId\MicrosoftWindows.UndockedDevKit_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.File\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\46928bounde.EclipseManager_2.2.4.51_neutral__a5h4egax66k6y" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.PPIProjection_10.0.15063.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.XboxGameCallableUI_1000.15063.0.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.XboxGameCallableUI_1000.16299.15.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.Windows.Search_1.14.0.19041_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.Windows.ShellExperienceHost_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\Microsoft.Windows.StartMenuExperienceHost_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Launch\PackageId\MicrosoftWindows.UndockedDevKit_10.0.19041.423_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.PreInstalledConfigTask\PackageId\Microsoft.MicrosoftOfficeHub_17.7909.7600.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\ActiproSoftwareLLC.562882FEEB491_2.6.18.18_neutral__24pqs290vpjk0" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.PPIProjection_10.0.15063.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.XboxGameCallableUI_1000.15063.0.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.XboxGameCallableUI_1000.16299.15.0_neutral_neutral_cw5n1h2txyewy" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.BingWeather_4.25.20211.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.GetHelp_10.1706.13331.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.Getstarted_8.2.22942.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.MicrosoftEdge_44.19041.423.0_neutral__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.MicrosoftOfficeHub_18.1903.1152.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.MixedReality.Portal_2000.19081.1301.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.MSPaint_6.1907.29027.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.Office.OneNote_16001.12026.20112.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.People_10.1902.633.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.WindowsAlarms_10.1906.2182.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.WindowsCamera_2018.826.98.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.WindowsFeedbackHub_1.1907.3152.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.WindowsCalculator_10.1906.55.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.WindowsMaps_5.1906.1972.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.WindowsStore_11910.1002.5.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.Xbox.TCUI_1.23.28002.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.XboxApp_48.49.31001.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.XboxGameCallableUI_1000.19041.423.0_neutral_neutral_cw5n1h2txyewy"
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.XboxGameOverlay_1.46.11001.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.XboxGamingOverlay_2.34.28001.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.XboxSpeechToTextOverlay_1.17.29001.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.ZuneMusic_10.19071.19011.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-	emove-ItemProperty -Path "HCKR\Extensions\ContractId\Windows.Protocol\PackageId\Microsoft.ZuneVideo_10.19071.19011.0_x64__8wekyb3d8bbwe" -ErrorAction SilentlyContinue
-
-}
 
 Function LowerLatency {
 	Write-Host "Lowering Latency..."
@@ -1743,20 +1559,6 @@ Function DisableExtraServices {
     }
 }
 
-# Download ninite and install the selected apps
-Function DoNiniteInstall {
-    Write-Host "Downloading Ninite ..."
-    
-    $ofs = '-'
-    $niniteurl = "https://ninite.com/" + $niniteapps + "/ninite.exe"
-    $output = "C:\Ninite.exe"
-    
-    Invoke-WebRequest $niniteurl -OutFile $output
-    & $output
-
-    Write-Host
-    Read-Host "Press ENTER when all applications have been installed by Ninite"
-}
 
 # Delete Temp Files
 Function DeleteTempFiles {
@@ -1933,13 +1735,6 @@ function Test-RegistryValue {
 # Parse parameters and apply tweaks
 ##########
 
-Write-Host
-Write-Host
-Write-Host "WIN 10 Optimization Script For Windows 10 by BlackDragonBE"
-Write-Host "(Adapted version of https://github.com/Disassembler0/Win10-Initial-Setup-Script by Disassembler <disassembler@dasm.cz>)"
-Write-Host "--------------------------------------------"
-Write-Host "Make sure you've checked which tweaks are turned on before running this. Edit by placing # before anything you don't want to run."
-Write-Host
 $confirmation = Read-Host "If you're sure you want to run this, press y and ENTER. If not, just press ENTER to cancel."
 
 if ($confirmation -ne 'y') {
