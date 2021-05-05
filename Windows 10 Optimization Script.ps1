@@ -1,3 +1,5 @@
+Best used with Ghost Spectre Custom OS: http://ghostspectre.the-ninja.jp/21H1.X64.html
+
 <#
 MIT License
 Copyright (c) 2021 Gevorian
