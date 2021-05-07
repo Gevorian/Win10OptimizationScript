@@ -1,4 +1,4 @@
-﻿<#
+<#
 MIT License
 Copyright (c) 2021 Gevorian
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -60,8 +60,6 @@ $tweaks = @(
     elseif ($confirmationn -eq 64) {
     Set-ItemProperty -Path "HKLM:\SYSTEM\ControlSet001\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value 67108864
     }
-
-
 #Reduced latency, optimizing GPU and CPU function, reduced internet lag.
 
 Function RegistryOptimizations {
@@ -97,19 +95,14 @@ Function RegistryOptimizations {
 ##########
 # Parse parameters and apply tweaks
 ##########
-
 $confirmation = Read-Host "If you're sure you want to run this, press y and ENTER. If not, just press ENTER to cancel."
-
 if ($confirmation -ne 'y') {
     Write-Host
     Write-Host "Cancelled script execution."
     exit
 }
-
 Write-Host
 Write-Host "Let's roll!"
-
-
 # Normalize path to preset file
 $preset = ""
 $PSCommandArgs = $args
@@ -117,7 +110,6 @@ If ($args -And $args[0].ToLower() -eq "-preset") {
 	$preset = Resolve-Path $($args | Select-Object -Skip 1)
 	$PSCommandArgs = "-preset `"$preset`""
 }
-
 # Load function names from command line arguments or a preset file
 If ($args) {
 	$tweaks = $args
