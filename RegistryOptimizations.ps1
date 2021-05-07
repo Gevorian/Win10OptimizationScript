@@ -30,9 +30,7 @@ Add 3 Dword 32 bit values with names (case sensitive)
 $tweaks = @(
     "RegistryOptimizations"
 )
-
     $confirmation = Read-Host "How much ram do you have? (Integer Value only)"
-
     if ($confirmation -eq 4) {
     Set-ItemProperty -Path "HKLM:\SYSTEM\ControlSet001\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value 4194304
     }
@@ -61,7 +59,6 @@ $tweaks = @(
     Set-ItemProperty -Path "HKLM:\SYSTEM\ControlSet001\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value 67108864
     }
 #Reduced latency, optimizing GPU and CPU function, reduced internet lag.
-
 Function RegistryOptimizations {
     Write-Host "Optimizing Registry..."
     Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" -Name "IRPStackSize" -Type DWord -Value 32
