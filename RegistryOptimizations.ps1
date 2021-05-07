@@ -60,7 +60,7 @@ $tweaks = @(
     Set-ItemProperty -Path "HKLM:\SYSTEM\ControlSet001\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value 33554432
     }
 
-    if ($confirmationn -eq 64) {
+    elseif ($confirmationn -eq 64) {
     Set-ItemProperty -Path "HKLM:\SYSTEM\ControlSet001\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value 67108864
     }
 
